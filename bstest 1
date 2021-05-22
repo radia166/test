@@ -1,0 +1,268 @@
+1.
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class EcomExpert {
+
+ public static void main(String[] args){
+
+  WebDriverManager.chromedriver().setup();
+  WebDriver driver=new ChromeDriver();
+  String URL="http://automationpractice.com/index.php";
+  
+  
+  driver.get(URL);
+  driver.manage().window().maximize();
+  driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
+
+2.
+
+
+public class SignUp {
+
+ public static void main(String[] args) {
+ 
+  WebDriverManager.chromedriver().setup();
+  WebDriver driver=new ChromeDriver();
+  String URL="http://automationpractice.com/index.php";
+
+  driver.get(URL);
+  driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+  driver.manage().window().maximize();
+  
+
+  driver.findElement(By.linkText("Sign in")).click();
+  
+   
+
+  driver.findElement(By.cssSelector("[name='email_create']")).sendKeys("kikitest@huha.com");
+  
+ 
+  driver.findElement(By.xpath("//button[@name=\"SubmitCreate\"]")).click();
+  
+
+  driver.findElement(By.xpath("//input[@id=\"id_gender2\"]")).click();
+  driver.findElement(By.name("customer_firstname")).sendKeys("Kiki");
+  driver.findElement(By.name("customer_lastname")).sendKeys("Test");
+  driver.findElement(By.id("passwd")).sendKeys("12345678");
+  
+  
+  driver.findElement(By.id("firstname")).sendKeys("Kiki");
+  driver.findElement(By.id("lastname")).sendKeys("Test");
+  driver.findElement(By.id("company")).sendKeys("Hulu");
+  driver.findElement(By.id("address1")).sendKeys("abc Road -2,2021");
+  driver.findElement(By.id("city")).sendKeys("NYC");
+  
+
+  WebElement statedropdown=driver.findElement(By.name("id_state"));
+  Select oSelect=new Select(statedropdown);
+  oSelect.selectByValue("16");
+
+  driver.findElement(By.name("postcode")).sendKeys("56543");
+  
+  
+  WebElement countrydropDown=driver.findElement(By.name("id_country"));
+  Select oSelectC=new Select(countrydropDown);
+  oSelectC.selectByVisibleText("United States");
+  
+ 
+  driver.findElement(By.id("phone_mobile")).sendKeys("0907785356");
+  driver.findElement(By.xpath("//input[@name=\"alias\"]")).clear();
+  driver.findElement(By.xpath("//input[@name=\"alias\"]")).sendKeys("nyc milabu");
+  driver.findElement(By.name("submitAccount")).click();
+  String userText=driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).getText();
+
+  if(userText.contains("Test")) {
+   System.out.println("User Verified,Test case Passed");
+  }
+  else {
+   System.out.println("User Verification Failed,Test case Failed");
+  }
+ }
+}
+
+
+2.1
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SignUp {
+
+ public static void main(String[] args) {
+ 
+  WebDriverManager.chromedriver().setup();
+  WebDriver driver=new ChromeDriver();
+  String URL="http://automationpractice.com/index.php";
+
+  driver.get(URL);
+  driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+  driver.manage().window().maximize();
+  
+
+  driver.findElement(By.linkText("Sign in")).click();
+  
+   
+
+  driver.findElement(By.cssSelector("[name='email_create']")).sendKeys("Lolatest@hulu.com");
+  
+ 
+  driver.findElement(By.xpath("//button[@name=\"SubmitCreate\"]")).click();
+  
+
+  driver.findElement(By.xpath("//input[@id=\"id_gender1\"]")).click();
+  driver.findElement(By.name("customer_firstname")).sendKeys("Lola");
+  driver.findElement(By.name("customer_lastname")).sendKeys("Hulu");
+  driver.findElement(By.id("passwd")).sendKeys("123@1234");
+  
+  
+  driver.findElement(By.id("firstname")).sendKeys("Lola");
+  driver.findElement(By.id("lastname")).sendKeys("Hulu");
+  driver.findElement(By.id("company")).sendKeys("Test");
+  driver.findElement(By.id("address1")).sendKeys("bcy, block C,2021");
+  driver.findElement(By.id("city")).sendKeys("NJ");
+  
+
+  WebElement statedropdown=driver.findElement(By.name("id_state"));
+  Select oSelect=new Select(statedropdown);
+  oSelect.selectByValue("6");
+
+  driver.findElement(By.name("postcode")).sendKeys("543");
+  
+  
+  WebElement countrydropDown=driver.findElement(By.name("id_country"));
+  Select oSelectC=new Select(countrydropDown);
+  oSelectC.selectByVisibleText("United States");
+  
+ 
+  driver.findElement(By.id("phone_mobile")).sendKeys("0906435356");
+  driver.findElement(By.xpath("//input[@name=\"alias\"]")).clear();
+  driver.findElement(By.xpath("//input[@name=\"alias\"]")).sendKeys("NJK mabu");
+  driver.findElement(By.name("submitAccount")).click();
+  String userText=driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).getText();
+
+  if(userText.contains("Hulu")) {
+   System.out.println("User Verified,Test case Passed");
+  }
+  else {
+   System.out.println("User Verification Failed,Test case Failed");
+  }
+ }
+}
+
+
+3.
+driver.findElement(By.linkText("WOMEN")).click();
+
+  WebElement SecondImg=driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/ul/li[2]/div/div[1]/div/a[1]/img"));
+  WebElement MoreBtn=driver.findElement(By.xpath("/html/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/ul/li[2]/div[1]/div[2]/div[2]/a[2]"));
+  Actions actions=new Actions(driver);
+  actions.moveToElement(SecondImg).moveToElement(MoreBtn).click().perform();
+
+  
+  WebElement Sizedrpdwn=driver.findElement(By.xpath("//*[@id='group_1']"));
+  Select oSelect=new Select(Sizedrpdwn);
+  oSelect.selectByVisibleText("L");
+
+  driver.findElement(By.id("color_1")).click();
+
+  
+  driver.findElement(By.xpath("//p[@id='add_to_cart']//span[.='Add to cart']")).click();
+
+ 
+  driver.findElement(By.xpath("/html//div[@id='layer_cart']//a[@title='Proceed to checkout']/span")).click();
+  
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/p[2]/a[1]/span")).click();
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/p/button/span")).click();
+ 
+  driver.findElement(By.xpath("//*[@id=\"cgv\"]")).click();
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/form/p/button/span")).click();
+
+//Second
+  driver.findElement(By.linkText("Casual Dresses")).click();
+
+  WebElement FirstImg=driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[4]/div[2]/ul/li[2]/div/div[1]/div/a[1]/img"));
+  WebElement MoreBtn=driver.findElement(By.xpath("/html/body[1]/div[1]/div[2]/div[1]/div[4]/div[2]/ul/li[2]/div[1]/div[2]/div[2]/a[2]"));
+  Actions actions=new Actions(driver);
+  actions.moveToElement(SecondImg).moveToElement(MoreBtn).click().perform();
+
+  
+  WebElement Sizedrpdwn=driver.findElement(By.xpath("//*[@id='group_1']"));
+  Select oSelect=new Select(Sizedrpdwn);
+  oSelect.selectByVisibleText("S");
+
+  driver.findElement(By.id("color_1")).click();
+
+  
+  driver.findElement(By.xpath("//p[@id='add_to_cart']//span[.='Add to cart']")).click();
+
+ 
+  
+  
+
+
+4.
+  driver.findElement(By.xpath("/html//div[@id='layer_cart']//a[@title='Proceed to checkout']/span")).click();
+  
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/p[2]/a[1]/span")).click();
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/p/button/span")).click();
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[4]/div[2]/ul/li[2]/div/div[1]/div/a[1]/img"));
+  driver.findElement(By.xpath("/html/body[1]/div[1]/div[2]/div[1]/div[4]/div[2]/ul/li[2]/div[1]/div[2]/div[2]/a[2]"));
+
+  driver.findElement(By.xpath("//*[@id=\"cgv\"]")).click();
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/form/p/button/span")).click();
+
+  
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/div/div[3]/div[2]/div/p/a")).click();
+  
+  driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/p/button/span")).click();
+
+  
+  String ConfirmationText=driver.findElement(By.xpath("//div[@id='center_column']/p[@class='alert alert-success']")).getText();
+  
+  
+  if(ConfirmationText.contains("complete")) {
+   System.out.println("Order Completed: Test Case Passed");
+  }
+  else {
+   System.out.println("Order Not Successfull: Test Case Failed");
+  }
+
+ }
+}
+
+
+
+
+test 2:
+n = int(input())
+list1 =[]
+for i in range(0,n):
+    x,y,z = input().split()
+    list1.append((z,y,x))
+    
+list1.sort(reverse=True)
+
+for i in list1:
+    
+    print(i[1], i[0])
+    
+    
+    
+    
+    
+ test 3 : 
+ SELECT Name FROM STUDENTS WHERE Marks > 75 ORDER BY RIGHT(Name, 3), ID;
+
